@@ -12,7 +12,7 @@ contract MintableERC1155 is ERC1155 {
     function mint(address to, uint256 tokenId, uint256 amount) public {
         _mint(to, tokenId, amount, "");
     }
-}
+}F
 
 contract ERC1155EligibilityTest is Deploy, Test {
     string public FACTORY_VERSION = "factory test version";

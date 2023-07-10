@@ -7,7 +7,7 @@ HatsEligibilityModules is a repo containing a number of separate eligility modul
 - ERC721Eligibility: checks if addresses meet a minimum balance of an ERC721 token
 - ERC1155Eligibility: checks if addresses holds at least one minimum balance of a set of ERC1155 token Ids
 
-All contracts are based on the Hats Protocol's [hats-module repo](https://github.com/Hats-Protocol/hats-module)
+All contracts are based on the Hats Protocol's repo: [hats-module](https://github.com/Hats-Protocol/hats-module)
 
 ## Development
 

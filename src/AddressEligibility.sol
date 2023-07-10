@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import { HatsEligibilityModule, HatsModule } from "hats-module/HatsEligibilityModule.sol";
+import {HatsEligibilityModule, HatsModule} from "hats-module/HatsEligibilityModule.sol";
 
 /**
  * @title AddressEligibility
@@ -112,7 +112,9 @@ contract AddressEligibility is HatsEligibilityModule {
      * @notice makes addresses eligible
      * @param _addresses array of addresses to make eligible
      */
-    function addEligibleAddresses(address[] calldata _addresses) external onlyHatAdmin hatIsMutable {
+    function addEligibleAddresses(
+        address[] calldata _addresses
+    ) external onlyHatAdmin hatIsMutable {
         uint len = _addresses.length;
         for (uint i = 0; i < len; i++) {
             isEligible[_addresses[i]] = true;
@@ -142,7 +144,7 @@ contract AddressEligibility is HatsEligibilityModule {
      * @dev Returns whether this instance of ERC721Eligibility's hatId is mutable
      */
     function _hatIsMutable() internal view returns (bool _isMutable) {
-        (,,,,,,, _isMutable,) = HATS().viewHat(hatId());
+        (, , , , , , , _isMutable, ) = HATS().viewHat(hatId());
     }
 
     /*//////////////////////////////////////////////////////////////
