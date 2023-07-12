@@ -9,6 +9,8 @@ HatsEligibilityModules is a repo containing a number of separate eligility modul
 
 All contracts are based on the Hats Protocol's repo: [hats-module](https://github.com/Hats-Protocol/hats-module)
 
+**Note**: The contracts have not been audited - use at your own risk.
+
 ## Development
 
 This repo uses Foundry for development and testing. To get started:

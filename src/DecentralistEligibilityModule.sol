@@ -30,7 +30,7 @@ contract DecentralistEligibility is HatsEligibilityModule {
      * --------------------------------------------------------------------+
      */
 
-    /// The address of the ERC20 contract used to check eligibility
+    /// The address of the Decentralist contract used to check eligibility
     function LIST_ADDRESS() public pure returns (address) {
         return _getArgAddress(72);
     }
@@ -56,7 +56,6 @@ contract DecentralistEligibility is HatsEligibilityModule {
         uint256 /*_hatId */
     ) public view override returns (bool eligible, bool standing) {
         eligible = DecentralistInterface(LIST_ADDRESS()).onList(_wearer);
-
         standing = true;
     }
 }

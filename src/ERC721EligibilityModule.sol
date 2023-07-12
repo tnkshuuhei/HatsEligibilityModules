@@ -44,7 +44,7 @@ contract ERC721Eligibility is HatsEligibilityModule {
                             CONSTRUCTOR
     //////////////////////////////////////////////////////////////*/
 
-    /// @notice Deploy the ERC20Eligibility implementation contract and set its version
+    /// @notice Deploy the ERC721Eligibility implementation contract and set its version
     /// @dev This is only used to deploy the implementation contract, and should not be used to deploy clones
     constructor(string memory _version) HatsModule(_version) {}
 
@@ -59,7 +59,7 @@ contract ERC721Eligibility is HatsEligibilityModule {
         uint256 /*_hatId */
     ) public view override returns (bool eligible, bool standing) {
         uint256 balance = IERC721(TOKEN_ADDRESS()).balanceOf(_wearer);
-        eligible = balance >= MIN_BALANCE() ? true : false;
+        eligible = balance >= MIN_BALANCE();
         standing = true;
     }
 }

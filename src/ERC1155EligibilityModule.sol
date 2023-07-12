@@ -38,18 +38,21 @@ contract ERC1155Eligibility is HatsEligibilityModule {
         return _getArgAddress(72);
     }
 
-    /// The address of the ERC1155 contract used to check eligibility
+    /// The length of the TOKEN_IDS & MIN_BALANCES arrays - these MUST be equal.
     function ARRAY_LENGTH() public pure returns (uint256) {
         return _getArgUint256(92);
     }
 
-    /// The token IDs that allow eligibility. Wearer must satisfy only one token ID criteria for eligiblity
+    /// The ERC1155token IDs that allow eligibility. 
+    /// @dev NOTE: Wearer must satisfy only one token ID criteria for eligiblity.
+    /// @dev NOTE: the TOKEN_IDS length must match the MIN_BALANCES length
     function TOKEN_IDS() public pure returns (uint256[] memory) {
         return _getArgUint256Array(124, ARRAY_LENGTH());
     }
 
     /// The minimum balances required (for token ID in the corresponding index) for eligibility.
-    /// Wearer must satisfy only one token ID criteria for eligiblity
+    /// @dev NOTE: Wearer must satisfy only one token ID criteria for eligiblity
+    /// @dev NOTE: the TOKEN_IDS length must match the MIN_BALANCES length
     function MIN_BALANCES() public pure returns (uint256[] memory) {
         return _getArgUint256Array(124 + ARRAY_LENGTH() * 32, ARRAY_LENGTH());
     }
@@ -58,7 +61,7 @@ contract ERC1155Eligibility is HatsEligibilityModule {
                             CONSTRUCTOR
     //////////////////////////////////////////////////////////////*/
     /**
-     * @notice Deploy the ERC20Eligibility implementation contract and set its version
+     * @notice Deploy the ERC1155Eligibility implementation contract and set its version
      * @dev This is only used to deploy the implementation contract, and should not be used to deploy clones
      */
     constructor(string memory _version) HatsModule(_version) {}
@@ -78,10 +81,11 @@ contract ERC1155Eligibility is HatsEligibilityModule {
         uint256[] memory tokenIds = TOKEN_IDS();
         uint256[] memory minBalances = MIN_BALANCES();
 
-        for (uint256 i = 0; i < len; i++) {
-            if (token.balanceOf(_wearer, tokenIds[i]) >= minBalances[i]) {
-                eligible = true;
-                break;
+        for (uint256 i = 0; i < len;) {
+            eligible = token.balanceOf(_wearer, tokenIds[i]) >= minBalances[i];
+            if (eligible) break;
+            unchecked {
+                ++i;
             }
         }
         standing = true;

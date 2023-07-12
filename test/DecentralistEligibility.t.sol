@@ -3,7 +3,7 @@ pragma solidity ^0.8.18;
 
 import {Test, console2} from "forge-std/Test.sol";
 import {HatsModule, HatsModuleFactory, IHats, Deploy} from "../script/HatsModuleFactory.s.sol";
-import {DecentralistEligibility} from "src/DecentralistEligibility.sol";
+import {DecentralistEligibility} from "src/DecentralistEligibilityModule.sol";
 
 // NOTE: this test script does not deploy Decentralist or UMA contracts, soit must be run on Goerli
 contract DecentralistEligibilityTest is Deploy, Test {

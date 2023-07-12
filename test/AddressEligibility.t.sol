@@ -4,7 +4,7 @@ pragma solidity ^0.8.18;
 
 import {Test, console2} from "forge-std/Test.sol";
 import {HatsModule, HatsModuleFactory, IHats, Deploy} from "../script/HatsModuleFactory.s.sol";
-import {AddressEligibility} from "src/AddressEligibility.sol";
+import {AddressEligibility} from "src/AddressEligibilityModule.sol";
 
 contract AddressEligibilityTest is Deploy, Test {
     error AddressEligibility_NotHatAdmin();

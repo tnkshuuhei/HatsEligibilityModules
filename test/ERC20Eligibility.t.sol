@@ -4,7 +4,7 @@ pragma solidity ^0.8.18;
 import {Test, console2} from "forge-std/Test.sol";
 import {ERC20} from "@openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
 import {HatsModule, HatsModuleFactory, IHats, Deploy} from "../script/HatsModuleFactory.s.sol";
-import {ERC20Eligibility} from "src/ERC20Eligibility.sol";
+import {ERC20Eligibility} from "src/ERC20EligibilityModule.sol";
 
 contract MintableERC20 is ERC20 {
     constructor() ERC20("Test Token", "TT") {}

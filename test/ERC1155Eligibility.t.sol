@@ -4,7 +4,7 @@ pragma solidity ^0.8.18;
 import {Test, console2} from "forge-std/Test.sol";
 import {ERC1155} from "@openzeppelin-contracts/contracts/token/ERC1155/ERC1155.sol";
 import {HatsModule, HatsModuleFactory, IHats, Deploy} from "../script/HatsModuleFactory.s.sol";
-import {ERC1155Eligibility} from "src/ERC1155Eligibility.sol";
+import {ERC1155Eligibility} from "src/ERC1155EligibilityModule.sol";
 
 contract MintableERC1155 is ERC1155 {
     constructor() ERC1155("") {}
@@ -12,7 +12,7 @@ contract MintableERC1155 is ERC1155 {
     function mint(address to, uint256 tokenId, uint256 amount) public {
         _mint(to, tokenId, amount, "");
     }
-}F
+}
 
 contract ERC1155EligibilityTest is Deploy, Test {
     string public FACTORY_VERSION = "factory test version";

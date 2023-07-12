@@ -4,7 +4,7 @@ pragma solidity ^0.8.18;
 import {Test, console2} from "forge-std/Test.sol";
 import {ERC721} from "@openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
 import {HatsModule, HatsModuleFactory, IHats, Deploy} from "../script/HatsModuleFactory.s.sol";
-import {ERC721Eligibility} from "src/ERC721Eligibility.sol";
+import {ERC721Eligibility} from "src/ERC721EligibilityModule.sol";
 
 contract MintableERC721 is ERC721 {
     constructor() ERC721("Test NFT", "TNFT") {}
