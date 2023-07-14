@@ -13,7 +13,7 @@ All contracts are based on the Hats Protocol's repo: [hats-module](https://githu
 
 ## Deployments
 
-For information on Hats Protocol versions and deployments, see (Releases)[https://github.com/pumpedlunch/HatsEligibilityModules/releases].
+For information on Hats Protocol versions and deployments, see [Releases](https://github.com/pumpedlunch/HatsEligibilityModules/releases).
 
 ## Development
 
