@@ -11,7 +11,7 @@ import {IERC1155} from "@openzeppelin-contracts/contracts/token/ERC1155/IERC1155
  * @notice A Hats Protocol eligibility module that checks if addresses holds at least one minimum balance of a set of ERC1155 token Ids
  */
 
-contract ERC1155Eligibility is HatsEligibilityModule {
+contract MultiERC1155Eligibility is HatsEligibilityModule {
     /*//////////////////////////////////////////////////////////////
                           PUBLIC CONSTANTS
     //////////////////////////////////////////////////////////////*/

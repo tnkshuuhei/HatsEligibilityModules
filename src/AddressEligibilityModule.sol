@@ -130,8 +130,12 @@ contract AddressEligibility is HatsEligibilityModule {
         address[] calldata _addresses
     ) external onlyHatAdmin hatIsMutable {
         uint len = _addresses.length;
-        for (uint i = 0; i < len; i++) {
+        for (uint i = 0; i < len;) {
             isEligible[_addresses[i]] = false;
+            
+            unchecked{
+                ++i;
+            }
         }
         emit AddressEligibility_AddressesRemoved(_addresses);
     }

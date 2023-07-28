@@ -59,7 +59,7 @@ contract ERC20Eligibility is HatsEligibilityModule {
         uint256 /*_hatId */
     ) public view override returns (bool eligible, bool standing) {
         uint256 balance = IERC20(TOKEN_ADDRESS()).balanceOf(_wearer);
-        eligible = balance >= MIN_BALANCE() ? true : false;
+        eligible = balance >= MIN_BALANCE();
         standing = true;
     }
 }

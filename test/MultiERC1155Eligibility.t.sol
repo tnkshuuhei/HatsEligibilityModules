@@ -4,7 +4,7 @@ pragma solidity ^0.8.18;
 import {Test, console2} from "forge-std/Test.sol";
 import {ERC1155} from "@openzeppelin-contracts/contracts/token/ERC1155/ERC1155.sol";
 import {HatsModule, HatsModuleFactory, IHats, Deploy} from "../script/HatsModuleFactory.s.sol";
-import {ERC1155Eligibility} from "src/ERC1155EligibilityModule.sol";
+import {MultiERC1155Eligibility} from "src/MultiERC1155EligibilityModule.sol";
 
 contract MintableERC1155 is ERC1155 {
     constructor() ERC1155("") {}
@@ -14,7 +14,7 @@ contract MintableERC1155 is ERC1155 {
     }
 }
 
-contract ERC1155EligibilityTest is Deploy, Test {
+contract MultiERC1155EligibilityTest is Deploy, Test {
     string public FACTORY_VERSION = "factory test version";
     string public MODULE_VERSION = "module test version";
     uint256[] public TOKEN_IDS = [1, 2];
@@ -23,9 +23,9 @@ contract ERC1155EligibilityTest is Deploy, Test {
     address public eligible2 = makeAddr("eligible2");
     address public ineligible1 = makeAddr("ineligible1");
 
-    ERC1155Eligibility public instance;
+    MultiERC1155Eligibility public instance;
     MintableERC1155 public mintableERC1155;
-    ERC1155Eligibility public implementation;
+    MultiERC1155Eligibility public implementation;
 
     function setUp() external {
         //deploy HatsModuleFactory
@@ -39,7 +39,7 @@ contract ERC1155EligibilityTest is Deploy, Test {
         mintableERC1155.mint(eligible2, TOKEN_IDS[1], MIN_BALANCES[1]);
 
         //deploy ERC1155HatsEligbility implementation
-        implementation = new ERC1155Eligibility(MODULE_VERSION);
+        implementation = new MultiERC1155Eligibility(MODULE_VERSION);
 
         bytes memory otherImmutableArgs = abi.encodePacked(
             address(mintableERC1155),
@@ -49,7 +49,7 @@ contract ERC1155EligibilityTest is Deploy, Test {
         );
 
         //create ERC1155HatsEligbility instance
-        instance = ERC1155Eligibility(
+        instance = MultiERC1155Eligibility(
             factory.createHatsModule(
                 address(implementation),
                 0,
@@ -60,7 +60,7 @@ contract ERC1155EligibilityTest is Deploy, Test {
     }
 }
 
-contract Constructor is ERC1155EligibilityTest {
+contract Constructor is MultiERC1155EligibilityTest {
     function test_version__() public {
         // version_ is the value in the implementation contract
         assertEq(
@@ -76,7 +76,7 @@ contract Constructor is ERC1155EligibilityTest {
     }
 }
 
-contract SetUp is ERC1155EligibilityTest {
+contract SetUp is MultiERC1155EligibilityTest {
     function test_Immutables() external {
         assertEq(
             instance.TOKEN_ADDRESS(),
@@ -89,7 +89,7 @@ contract SetUp is ERC1155EligibilityTest {
     }
 }
 
-contract GetWearerStatus is ERC1155EligibilityTest {
+contract GetWearerStatus is MultiERC1155EligibilityTest {
     function _eligibilityCheck(address _wearer, bool expect) internal {
         (bool eligible, bool standing) = instance.getWearerStatus(_wearer, 0);
         assertEq(eligible, expect);
