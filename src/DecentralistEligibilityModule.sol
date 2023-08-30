@@ -38,9 +38,7 @@ contract DecentralistEligibility is HatsEligibilityModule {
   /*//////////////////////////////////////////////////////////////
                                 INITIALIZER
     //////////////////////////////////////////////////////////////*/
-  function _setUp(bytes calldata _initData) internal override {
-    //not used currently TODO: delete?
-  }
+  function _setUp(bytes calldata _initData) internal override { }
 
   /*//////////////////////////////////////////////////////////////
                             CONSTRUCTOR
