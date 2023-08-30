@@ -69,7 +69,7 @@ contract AddressEligibility is HatsEligibilityModule {
   /**
    * @inheritdoc HatsModule
    */
-  function setUp(bytes calldata _initData) public override initializer(){
+  function _setUp(bytes calldata _initData) internal override {
     // decode the _initData bytes and set the addresses as eligible
     address[] memory _addresses = abi.decode(_initData, (address[]));
     uint256 len = _addresses.length;

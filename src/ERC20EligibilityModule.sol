@@ -31,7 +31,7 @@ contract ERC20Eligibility is HatsEligibilityModule {
    */
 
   /// The address of the ERC20 contract used to check eligibility
-  function TOKEN_ADDRESS() public pure returns (address) {
+  function ERC20_TOKEN_ADDRESS() public pure returns (address) {
     return _getArgAddress(72);
   }
 
@@ -60,7 +60,7 @@ contract ERC20Eligibility is HatsEligibilityModule {
     override
     returns (bool eligible, bool standing)
   {
-    uint256 balance = IERC20(TOKEN_ADDRESS()).balanceOf(_wearer);
+    uint256 balance = IERC20(ERC20_TOKEN_ADDRESS()).balanceOf(_wearer);
     eligible = balance >= MIN_BALANCE();
     standing = true;
   }
