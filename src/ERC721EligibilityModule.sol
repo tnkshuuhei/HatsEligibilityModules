@@ -31,7 +31,7 @@ contract ERC721Eligibility is HatsEligibilityModule {
    */
 
   /// The address of the ERC721 contract used to check eligibility
-  function TOKEN_ADDRESS() public pure returns (address) {
+  function ERC721_TOKEN_ADDRESS() public pure returns (address) {
     return _getArgAddress(72);
   }
 
@@ -60,7 +60,7 @@ contract ERC721Eligibility is HatsEligibilityModule {
     override
     returns (bool eligible, bool standing)
   {
-    uint256 balance = IERC721(TOKEN_ADDRESS()).balanceOf(_wearer);
+    uint256 balance = IERC721(ERC721_TOKEN_ADDRESS()).balanceOf(_wearer);
     eligible = balance >= MIN_BALANCE();
     standing = true;
   }
