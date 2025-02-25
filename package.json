@@ -1,0 +1,17 @@
+{
+  "name": "hypercerts-eligibility",
+  "description": "Hypercerts eligibility module contract for hats protocol",
+  "scripts": {
+    "test": "forge test --fork-url https://sepolia.drpc.org --match-path test/HypercertsEligibility.t.sol"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tnkshuuhei/HatsEligibilityModule.git"
+  },
+  "author": "Shuhei Tanaka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tnkshuuhei/HatsEligibilityModule/issues"
+  },
+  "homepage": "https://github.com/tnkshuuhei/HatsEligibilityModule#readme"
+}
