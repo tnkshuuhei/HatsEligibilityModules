@@ -1,11 +1,8 @@
 # HatsEligibilityModules
 
 HatsEligibilityModules is a repo containing a number of separate eligility modules for [Hats Protocol](https://github.com/hats-protocol/hats-protocol). The modules are summarized below:
-- AddressEligibility: check if addresses are on a whitelist that admins can edit
-- DecentralistEligibility: checks if an address is on a [Decentralist](https://www.decentra-list.xyz/) list
-- ERC20Eligibility: checks if addresses meet a minimum balance of an ERC20 token
-- ERC721Eligibility: checks if addresses meet a minimum balance of an ERC721 token
-- ERC1155Eligibility: checks if addresses holds at least one minimum balance of a set of ERC1155 token Ids
+
+- HypercertsEligibility: checks if addresses holds at least one minimum balance of a set of hypercerts token Ids and units of fractions
 
 All contracts are based on the Hats Protocol's repo: [hats-module](https://github.com/Hats-Protocol/hats-module)
 
@@ -13,7 +10,7 @@ All contracts are based on the Hats Protocol's repo: [hats-module](https://githu
 
 ## Deployments
 
-For Eligibility Module deployments, see [Releases](https://github.com/pumpedlunch/HatsEligibilityModules/releases).
+[Implementation of HypercertsEligibilityModule v0.2.1 on sepolia](https://sepolia.etherscan.io/address/0x61ad280d6df95effd7fba439b547252f8e35b8c9)
 
 ## Development
 
