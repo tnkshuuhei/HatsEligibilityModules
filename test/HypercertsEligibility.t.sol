@@ -9,7 +9,7 @@ import {IHypercertToken} from "src/interfaces/IHypercertToken.sol";
 
 // forge test --fork-url https://sepolia.drpc.org --match-path test/HypercertsEligibility.t.sol
 
-contract MultiERC1155EligibilityTest is Deploy, Test {
+contract HypercertsEligibilityTest is Deploy, Test {
     string public FACTORY_VERSION = "factory test version";
     string public MODULE_VERSION = "module test version";
     uint256 public constant TOKEN_ID =
@@ -44,12 +44,17 @@ contract MultiERC1155EligibilityTest is Deploy, Test {
         );
 
         vm.startPrank(eligible1);
+        // approve hypercerts befor spliting the tokens
         IERC1155(address(hypercerts)).setApprovalForAll(
             address(hypercerts),
             true
         );
 
+        // splits the tokens
+        // ...77 100_000_000 -> 50_000_000
+        // ...78 0 -> 50_000_000
         hypercerts.splitFraction(eligible2, TOKEN_ID, MIN_BALANCES_OF_UNITS);
+
         // make sure the split worked
         assertEq(
             hypercerts.unitsOf(
@@ -76,7 +81,7 @@ contract MultiERC1155EligibilityTest is Deploy, Test {
             MIN_BALANCES_OF_UNITS
         );
 
-        //create ERC1155HatsEligbility instance
+        //create HypercertsEligibility instance
         instance = HypercertsEligibility(
             factory.createHatsModule(
                 address(implementation),
@@ -93,15 +98,13 @@ contract MultiERC1155EligibilityTest is Deploy, Test {
             hypercerts = IHypercertToken(
                 0xa16DFb32Eb140a6f3F2AC68f41dAd8c7e83C4941
             );
-        } else if (block.chainid == 10) {
-            // optimism
         } else {
             revert("unsupported chain");
         }
     }
 }
 
-contract Constructor is MultiERC1155EligibilityTest {
+contract Constructor is HypercertsEligibilityTest {
     function test_version__() public {
         // version_ is the value in the implementation contract
         assertEq(
@@ -117,7 +120,7 @@ contract Constructor is MultiERC1155EligibilityTest {
     }
 }
 
-contract SetUp is MultiERC1155EligibilityTest {
+contract SetUp is HypercertsEligibilityTest {
     function test_Immutables() external {
         assertEq(
             instance.TOKEN_ADDRESS(),
@@ -138,7 +141,7 @@ contract SetUp is MultiERC1155EligibilityTest {
     }
 }
 
-contract GetWearerStatus is MultiERC1155EligibilityTest {
+contract GetWearerStatus is HypercertsEligibilityTest {
     function _eligibilityCheck(address _wearer, bool expect) internal {
         (bool eligible, bool standing) = instance.getWearerStatus(_wearer, 0);
         assertEq(eligible, expect);
