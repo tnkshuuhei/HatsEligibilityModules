@@ -2,7 +2,7 @@
 
 HatsEligibilityModules is a repo containing a number of separate eligility modules for [Hats Protocol](https://github.com/hats-protocol/hats-protocol). The modules are summarized below:
 
-- HypercertsEligibility: checks if addresses holds at least one minimum balance of a set of hypercerts token Ids and units of fractions
+- HypercertsEligibility: checks if addresses holds at least one minimum balance of units of fractions
 
 All contracts are based on the Hats Protocol's repo: [hats-module](https://github.com/Hats-Protocol/hats-module)
 
